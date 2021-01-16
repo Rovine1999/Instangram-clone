@@ -1,5 +1,5 @@
 #### BY
-#### Rovine Sydney Wanjala, 05/01/2021
+#### Rovine Sydney Wanjala, 1/01/2021
 #### Description
 A personal gallery application that displays my photos for others to see.
 
@@ -11,6 +11,9 @@ A personal gallery application that displays my photos for others to see.
 4. $ python3.6 -m venv --without-pip virtual- depending on the version of your python package
 5. $ source virtual/bin/activate
 6. Then install the dependencies: (virtual)$ pip install -r requirements.txt
+7. Download django using: pip install django on linux, go to browser and download django on windows depending on the bit of your machine.
+8. Run the project using: python manage.py runserver.
+9. Run tests using: python manage.py test IG.
 
 ###### Note the (virtual) in front of the prompt. This indicates that this terminal session operates in a virtual environment set up by virtualenv2.
 
