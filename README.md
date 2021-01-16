@@ -19,9 +19,9 @@ An instangram clone website to display profile photo, posts and cmments of insta
 
 ###### Once pip has finished downloading the dependencies:
 
-7. (virtual)$ cd Gallery
+7. (virtual)$ cd Instangram
 8. (virtual)$ python manage.py runserver
-And navigate to http://127.0.0.1:8000/Gallery/.
+And navigate to http://127.0.0.1:8000/Instangram/.
 
 In order to test the purchase flows, fill in the account details in project/views.py to match your SANDBOX developer credentials.
 
