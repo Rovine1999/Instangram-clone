@@ -5,7 +5,7 @@ A personal gallery application that displays my photos for others to see.
 
 #### Setup/Installation Requirements
 1. The first thing to do is to clone the repository: $ git clone https://github.com/Rovine1999/Instangram-clone.git
-2. $ cd Gallery
+2. $ cd Instangram
 3. Create a virtual environment to install dependencies in and activate it:
 
 4. $ python3.6 -m venv --without-pip virtual- depending on the version of your python package
