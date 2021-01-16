@@ -1,7 +1,7 @@
 #### BY
-#### Rovine Sydney Wanjala, 1/01/2021
+#### Rovine Sydney Wanjala, 16/01/2021
 #### Description
-A personal gallery application that displays my photos for others to see.
+An instangram clone website to display profile photo, posts and cmments of instangram.
 
 #### Setup/Installation Requirements
 1. The first thing to do is to clone the repository: $ git clone https://github.com/Rovine1999/Instangram-clone.git
