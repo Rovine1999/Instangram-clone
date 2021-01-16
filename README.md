@@ -4,7 +4,7 @@
 A personal gallery application that displays my photos for others to see.
 
 #### Setup/Installation Requirements
-1. The first thing to do is to clone the repository: $ git clone https://github.com/Rovine1999/Gallery.git
+1. The first thing to do is to clone the repository: $ git clone https://github.com/Rovine1999/Instangram-clone.git
 2. $ cd Gallery
 3. Create a virtual environment to install dependencies in and activate it:
 
