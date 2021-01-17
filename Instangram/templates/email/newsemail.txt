@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to the Instangram. You will find the most exciting things and updates about other Instangram users.
