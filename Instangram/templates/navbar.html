@@ -1,52 +1,34 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Navbar brand -->
-      <a class="navbar-brand" href="#"><b>Instangram</b></a>
-  
-      <!-- Toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-  
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-        
-        <!-- Left links -->
-  
-        <!-- Search form -->
-        <form class="d-flex input-group w-auto">
-          <input
-            type="search"
-            class="form-control"
-            placeholder="Type query"
-            aria-label="Search"
-          />
-          <button
-            class="btn btn-outline-primary"
-            type="button"
-            data-mdb-ripple-color="dark"
-          >
-            Search
+<header class="site-header">
+    <nav class="navbar navbar-inverse navbar-dark">
+      <div class="container-fluid">
+      
+        <!-- Brand/logo -->
+        <div class="navbar-header ">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="{% url 'newsToday' %}" aria-expanded="false">
+            <span class="sr-only">INSTAGRAM CLONE</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
-        </form>
+          <a class="navbar-brand" href="{% url 'newsToday' %}">INSTAGRAM CLONE</a>
+        </div>
+        
+        <!-- Collapsible Navbar -->
+        <div class="collapse navbar-collapse" id="example-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'newsToday' %}">Home <span class="sr-only">(current)</span></a></li>
+            
+          {% if user.is_authenticated %}
+          
+         <li> <a  href="{% url 'new_post' %}">New Post</a></li>
+         <li> <a  href="{% url 'new_profile' %}">Profile</a></li>
+         <li> <a  href="accounts/logout">Logout</a></li>
+          {% else %}
+         <li><a  href="accounts/login">Login</a></li>
+         <li> <a href="accounts/register">Register</a></li>
+          {% endif %}
+          </ul>
+        </div>
       </div>
-      <!-- Collapsible wrapper -->
-    </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
+    </nav>
+    </header>
