@@ -88,4 +88,15 @@ class Comment(models.Model):
     image = models.ForeignKey(Image, on_delete=models.CASCADE )
     pub_date = models.DateTimeField(auto_now_add=True)
     
-    
+    def save_comment(self):
+        self.save()
+        
+    def delete_comment(self):
+        self.delete()
+        
+    @classmethod
+    def update_comment(cls, id, value):
+        cls.objects.filter(id=id).update(name = value)
+        
+    def __str__(self):
+        return self.comment
