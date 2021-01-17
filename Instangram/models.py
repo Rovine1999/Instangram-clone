@@ -49,6 +49,38 @@ class Image(models.Model):
     likes = models.ManyToManyField(User, related_name = 'likes', blank = True)
     
     
+    def save_image(self):
+        self.save()
+    
+    def delete_image(self):
+        self.delete()
+        
+    def total_likes(self):
+        return self.likes.count()
+        
+    @classmethod
+    def update_image(cls, id, value):
+        cls.objects.filter(id=id).update(image=value)
+    
+    @classmethod
+    def get_image(request, id):
+        try:
+            image = Image.objects.get(pk = id)
+            print(image)
+            
+        except ObjectDoesNotExist:
+            raise Http404()
+        
+        return image
+    
+    @classmethod
+    def search_by_author(cls, Author):
+        images = cls.objects.filter(Author__user__icontains=Author)
+        return images
+
+  
+    def __str__(self):
+        return self.image_name 
     
 class Comment(models.Model):
     comment = models.TextField(blank=True)
