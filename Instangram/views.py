@@ -30,7 +30,7 @@ def index(request):
             HttpResponseRedirect('news_today')
     else:
         form = NewsLetterForm()
-    return render(request, 'home.html', {"date": date,"images":images, "users":users, "form": form})
+    return render(request, 'index.html', {"date": date,"images":images, "users":users, "form": form})
 
 
 @login_required(login_url='/accounts/login/')

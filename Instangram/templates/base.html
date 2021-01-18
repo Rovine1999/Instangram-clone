@@ -19,7 +19,7 @@
 </head>
 <body>
     <header class="site-header">
-      <nav class="navbar navbar-inverse navbar-dark">
+        <nav class="navbar navbar-dark bg-warning">
         <div class="container-fluid">
         
           <!-- Brand/logo -->
@@ -30,20 +30,20 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'newsToday' %}">INSTAGRAM CLONE</a>
+            <a class="navbar-brand" href="{% url 'newsToday' %}"><b>INSTAGRAM</b></a>
           </div>
           
           <!-- Collapsible Navbar -->
           <div class="collapse navbar-collapse" id="example-1">
             <ul class="nav navbar-nav">
               <li class="active"><a href="{% url 'newsToday' %}">Home <span class="sr-only">(current)</span></a></li>
-              <li><a href="{% url 'new_post' %}">New Post</a></li>
+             
 
 
             {% if user.is_authenticated %}
             
-           <li> <a  href="{% url 'new_post' %}">New Post</a></li>
-           <li> <a  href="{% url 'new_profile' %}">Profile</a></li>
+           <li> <a  href="{% url 'post' %}">Post</a></li>
+           <li> <a  href="{% url 'profile' %}">Profile</a></li>
            <li> <a  href="accounts/logout">Logout</a></li>
             {% else %}
            <li><a  href="accounts/login">Login</a></li>
@@ -51,6 +51,50 @@
             {% endif %}
             </ul>
           </div>
+
+           <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+        <!-- Left links -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <!-- Navbar dropdown -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <!-- Dropdown menu -->
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+              >Disabled</a
+            >
+          </li>
+        </ul>
+        <!-- Left links -->
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
           
           
         
@@ -67,9 +111,19 @@
       {% endif %}
       {% block content %}
       {% endblock %}
-    </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      {% block scripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
+
+   {% bootstrap_javascript %}
+  {% endblock %}
 </body>
 </html>

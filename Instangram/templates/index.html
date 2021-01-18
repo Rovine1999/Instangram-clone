@@ -9,15 +9,15 @@
                 {% if user.profile.photo %}
             <img src="{{ user.profile.url }}" alt="" class="d-flex justify-content-start rounded-circle mb-1 img-fluid mr-1" style="width: 150px;">
             {% else %}
-            <img src="https://source.unsplash.com/1600x900/?user,profile" alt="" class="d-flex justify-content-start rounded-circle mb-1 img-fluid mr-1" style="width: 150px;">
+            
               {% endif %}
                 <h4> <span class="font-weight-bold"> Username:</span>  {{user.username}} </h4>
         <p> <span class="font-weight-bold"> Email:</span>  {{user.email}} </p>
         <p> <span class="font-weight-bold"> Bio:</span> {{ user.profile.bio}}  </p>
-        <button class="btn btn-md btn-outline-info font-weight-bold" data-toggle="modal" data-target="#profile"> Edit Profile</button>
+        <button class="btn btn-md btn-outline-warning font-weight-bold" data-toggle="modal" data-target="#profile"> Edit Profile</button>
         </div>
         <hr>
-        <h4 class="font-weight-bold">My Photos</h4>
+        <h4 class="font-weight-bold"><u>My Photos</u></h4>
         <hr>
         {% if images %}
         {% for image_item in images%}
