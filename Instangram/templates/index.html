@@ -14,7 +14,7 @@
                 <h4> <span class="font-weight-bold"> Username:</span>  {{user.username}} </h4>
         <p> <span class="font-weight-bold"> Email:</span>  {{user.email}} </p>
         <p> <span class="font-weight-bold"> Bio:</span> {{ user.profile.bio}}  </p>
-        <button class="btn btn-md btn-outline-warning font-weight-bold" data-toggle="modal" data-target="#profile"> Edit Profile</button>
+        <button class="btn btn-md btn-outline-warning font-weight-bold" data-toggle="modal" data-target="{% url 'instangram' %}"> Edit Profile</button>
         </div>
         <hr>
         <h4 class="font-weight-bold"><u>My Photos</u></h4>
@@ -41,22 +41,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">              
-                <div>
-                  <!-- profile update form  -->
-                    <h4 class="font-weight-bold">Update Your Profile</h4>
-                    <hr class="">
-                    <form  method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% bootstrap_form form%}
-
-                    <div class="form-group">
-                    <button type="submit" class="btn blue-gradient btn-lg mt-2 font-weight-bold btn-block"> Update </button>
-                    </div>
-                    <input type="hidden" name="next" value="{{next}}">
-                    </form>
-                </div>      
-            </div>
+            
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary btn-md" data-dismiss="modal">Close</button>
             </div>
