@@ -1,4 +1,6 @@
-{% load bootstrap3 %} {% load static %}
+{%extends "django_registration/base.html"%}
+{% load bootstrap3 %} 
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -28,7 +30,7 @@
                 <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
                     {%csrf_token%}
 
-                    {% bootstrap_form form%}
+                    {% bootstrap_form form %}
                     <input type="submit" class="btn btn-warning btn-lg" value="Post">
                 </form>
             </div>

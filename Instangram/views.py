@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from itertools import chain
 from django.urls import reverse
 from .models import Image,Comment,Profile
-from .forms import NewPostForm,ProfileForm,CommentForm,NewsLetterForm
+from .forms import NewPostForm,ProfileForm,CommentForm,NewsLetterForm,UserUpdateForm,ProfileUpdateForm,RegistrationForm
 from django.urls import reverse
 
 
@@ -17,45 +17,46 @@ from django.views.generic import (ListView,DetailView,CreateView,UpdateView,Dele
 def register(request):
     if request.method=="POST":
         form=RegistrationForm(request.POST)
-        profForm=ProfileForm(request.POST, request.FILES)
-        if form.is_valid() and profForm.is_valid():
+        profileForm=ProfileForm(request.POST, request.FILES)
+        if form.is_valid() and profileForm.is_valid():
             username=form.cleaned_data.get('username')
             user=form.save()
-            profile=profForm.save(commit=False)
+            profile=profileForm.save(commit=False)
             profile.user=user
             profile.save()
             messages.success(request, f'Successfully created Account!.You can now login as {username}!')
         return redirect('login')
     else:
         form= RegistrationForm()
-        profForm=ProfileForm()
+        profileForm=ProfileForm()
     context={
         'form':form,
-        'profForm': profForm
+        'profileForm': profileForm
     }
-    return render(request, 'users/register.html', context)
+    return render(request, 'registration/registration.html', context)
 @login_required
 def profile(request):
     if request.method == 'POST':
         useForm=UserUpdateForm(request.POST, instance=request.user)
-        profForm=ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        if useForm.is_valid() and profForm.is_valid():
+        profileForm=ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if useForm.is_valid() and profileForm.is_valid():
             useForm.save()
-            profForm.save()
+            profileForm.save()
             messages.success(request, f'Your account has been updated!')
         return redirect('profile')
     else:
         useForm=UserUpdateForm(instance=request.user.profile)
-        profForm=ProfileUpdateForm(instance=request.user.profile)
+        profileForm=ProfileUpdateForm(instance=request.user.profile)
     context={
         'useForm':useForm,
-        'profForm':profForm
+        'profileForm':profileForm
     }
-    return render(request, 'users/profile.html', context)
+    return render(request, 'registration/profile.html', context)
 def index(request):
     context={
         'posts':Image.objects.all(),
-        'comments': Comment.objects.filter(image_id).all()
+        'comments': Comment.objects.filter(image_id).all(),
+        # 'profile':Profile.object.objects.get(pk = id).all()
     }
     return render(request, 'index.html', context)
 class PostListView(ListView):
@@ -73,10 +74,7 @@ class ProfileDetailView(DeleteView):
     model=Profile
     template_name='main/profile.html'
     context_object_name='posts'
-    def get_object(self, **kwargs):
-        pk=self.kwargs.get('pk')
-        avi=Profile.objects.get(pk=pk)
-        return avi
+    
     def get_context_data(self, **kwargs):
         context=super().get_context_data(**kwargs)
         avi=self.get_object()
@@ -98,15 +96,15 @@ class PostDetailView(DetailView):
         return context
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Image
-    fields = ['image', 'caption', 'name']
-    template_name='posts/postForm.html'
+    fields = ['image', 'description', 'image_name']
+    template_name='post.html'
     def form_valid(self, form):
         form.instance.author = self.request.user.profile
         return super().form_valid(form)
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Image
-    fields = ['image', 'caption', 'name']
-    template_name='posts/postForm.html'
+    fields = ['image', 'description', 'image_name']
+    template_name='post.html'
     def form_valid(self, form):
         form.instance.author = self.request.user.profile
         return super().form_valid(form)
@@ -140,7 +138,7 @@ def comment(request,id):
             comment.image_id = image
             comment.user_id = user_profile
             comment.save()
-            return redirect('gram-landing')
+            return redirect('instangram-landing')
     else:
         form = CommentForm()
     return render(request,'posts/comment.html',{"form":form, "images":images, "comments":comments})

@@ -11,7 +11,7 @@ class Profile(models.Model):
     # form.instance.user = Profile.objects.get(user=self.request.user)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
-    photo = CloudinaryField('image')
+    photo = models.ImageField('image')
     
     def save_profile(self):
         self.save()
@@ -22,12 +22,13 @@ class Profile(models.Model):
     
     @classmethod
     def get_profile(request, id):
-        try:
-            profile = Profile.objects.get(pk = id)
-            print(image)
+
+        # try:
+        profile = Profile.objects.get(pk = id)
+        #     print(image)
             
-        except ObjectDoesNotExist:
-            raise Http404()
+        # except ObjectDoesNotExist:
+        #     raise Http404()
         
         return profile
         
@@ -44,8 +45,7 @@ class Image(models.Model):
     image_name = models.CharField(max_length=255)
     description = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
-    Author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
-    author_profile = models.ForeignKey(Profile,on_delete=models.CASCADE, null=True)
+    Author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null = True)
     likes = models.ManyToManyField(User, related_name = 'likes', blank = True)
     
     
@@ -77,7 +77,7 @@ class Image(models.Model):
     def search_by_author(cls, Author):
         images = cls.objects.filter(Author__user__icontains=Author)
         return images
-
+    
   
     def __str__(self):
         return self.image_name 
