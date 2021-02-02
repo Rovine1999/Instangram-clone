@@ -1,6 +1,8 @@
-{%extends "registration/base.html"%}
+{% extends "registration/base.html" %}
+{% load crispy_forms_tags %}
 {% load bootstrap3 %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 
@@ -13,12 +15,15 @@
 
     {% block styles %}
     {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}"> {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"> 
+    {% endblock %}
 
 </head>
 
 <body>
-    {% include "navbar.html" %}
+ 
+ 
+    
     <div class="container">
 
         <hr>
@@ -29,7 +34,7 @@
                 <form action="{% url 'post' %}" method="post" enctype="multipart/form-data">
                     {%csrf_token%}
 
-                    {% bootstrap_form form%}
+                    {{form}}
                     <input type="submit" class="btn btn-warning btn-lg" value="Post">
                 </form>
             </div>
@@ -42,8 +47,11 @@
 
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {% bootstrap_javascript %} {% endblock %}
+    {% bootstrap_javascript %}
+     {% endblock %}
 
 </body>
 
 </html>
+     
+{% endblock %}

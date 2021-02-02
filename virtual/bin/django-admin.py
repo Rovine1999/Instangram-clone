@@ -1,4 +1,4 @@
-#!/home/rovine/Documents/Instangram/virtual/bin/python
+#!/home/moringa/Documents/Instangram-clone/virtual/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

@@ -1,7 +1,6 @@
 from django.db import models
 import datetime as dt
 from django.contrib.auth.models import User
-from tinymce.models import HTMLField
 import cloudinary
 from cloudinary.models import CloudinaryField
 
@@ -25,10 +24,7 @@ class Profile(models.Model):
 
         # try:
         profile = Profile.objects.get(pk = id)
-        #     print(image)
-            
-        # except ObjectDoesNotExist:
-        #     raise Http404()
+        
         
         return profile
         

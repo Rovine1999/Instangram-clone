@@ -44,7 +44,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'Instangram.apps.InstangramConfig',
     'bootstrap3',
-    'tinymce',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

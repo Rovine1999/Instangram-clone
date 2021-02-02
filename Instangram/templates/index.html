@@ -14,14 +14,20 @@
                 <h4> <span class="font-weight-bold"> Username:</span>  {{user.username}} </h4>
         <p> <span class="font-weight-bold"> Email:</span>  {{user.email}} </p>
         <p> <span class="font-weight-bold"> Bio:</span> {{ user.profile.bio}}  </p>
-        <button class="btn btn-md btn-outline-warning font-weight-bold" data-toggle="modal" data-target="{% url 'instangram' %}"> Edit Profile</button>
+        <button class="btn btn-md btn-outline-warning font-weight-bold" data-toggle="modal" href="{% url 'profile'%}"> Edit Profile</button>
         </div>
         <hr>
         <h4 class="font-weight-bold"><u>My Photos</u></h4>
         <hr>
         {% if images %}
         {% for image_item in images%}
-        <a href="/image/{{image_item.id}}"><img src="{{ image_item.image.url }}" alt="" class="rounded img-fluid mr-1" style="width: 200px;"></a>
+        <p>{{ image_item.image_name }}</p>
+        <a href="/image/{{image_item.id}}">
+        <img src="{{ image_item.image.url }}" alt="" class="rounded img-fluid mr-1" style="width: 200px;"></a>
+        <p>{{ image_item.description}}</p>
+        <p>{{ image_item.Author}}</p>
+        <p>{{ image_item.pub_date}}</p>
+
         {% endfor %}
 
         {% else %}
